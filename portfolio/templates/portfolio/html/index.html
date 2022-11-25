@@ -1,0 +1,29 @@
+{% extends 'portfolio/html/base.html' %}
+{% load static %}
+{% block content %}
+{% for project in projects %}
+<div class="container" id="top">
+    <div class="card mb-3" id="project">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img class="img-fluid rounded" src="media/{{ project.image }}" height=300px alt="photo">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title display-3">{{ project.title }}</h3>
+                    <p class="card-text display-6">{{ project.description | safe }}</p>
+                    {% if project.url %}
+                    <button class="btn btn-warning"><a class="display-6" href="{{ project.url }}">Click here</a>
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% if not forloop.last %}
+<br>
+<hr class="style1">
+{% endif %}
+{% endfor%}
+{% endblock %}

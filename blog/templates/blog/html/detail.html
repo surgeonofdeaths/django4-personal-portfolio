@@ -1,0 +1,20 @@
+{% extends 'portfolio/html/base.html' %}
+{% block content %}
+<style>
+    .text-center {
+        margin-top: 50px;
+    }
+
+    p {
+        padding-bottom: 30px
+    }
+</style>
+<div class="text-center">
+    <h1 class="alert alert-dark display-3">{{ blog.title | upper }}</h1>
+    <h2 class="display-5">--{{ blog.date | date:'F jS Y' }}--</h2>
+    <!-- m: 11  M: Nov F: November -->
+    <p class="display-6 alert alert-danger">{{ blog.description | safe }}</p>
+    <button class="btn btn-warning btn-lg"><a class="display-5" href="{% url 'blog:all_blogs' %}">Return</a></button>
+</div>
+
+{% endblock  %}

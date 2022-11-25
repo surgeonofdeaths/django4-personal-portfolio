@@ -1,0 +1,27 @@
+{% extends 'portfolio/html/base.html' %}
+{% block content %}
+<div class="title text-center">
+    <h1 class="text-uppercase my-5 display-4 alert alert-warning">Total blogs: {{ blogs.count }}</h1>
+</div>
+{% for blog in blogs %}
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title display-4 alert alert-dark">{{ blog.title | upper }}</h3>
+                    <p class="card-text display-6 ">{{ blog.description | safe | truncatechars:100}}</p>
+                    <button class="btn btn-warning"><a class="display-6" href="{% url 'blog:detail' blog.id %}">Read
+                        more</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% if not forloop.last %}
+<br>
+<hr class="style1">
+<br>
+{% endif %}
+{% endfor%}
+{% endblock %}
