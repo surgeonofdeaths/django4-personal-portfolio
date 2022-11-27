@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(qj*svd184aa-xba!!3=+k%kg7f4g5zqrb+%b!3(zd&8of@1g@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['surgeonofdeath.pythonanywhere.com']
+ALLOWED_HOSTS = ['surgeonofdeath.pythonanywhere.com',]
 
 
 # Application definition
@@ -127,3 +127,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+try:
+    from .local_settings import *
+except ImportError:
+    print('Looks like no local file. You must be on production')
